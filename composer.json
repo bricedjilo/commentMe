@@ -1,0 +1,13 @@
+{
+    "require-dev": {
+        "phpspec/phpspec": "^4.0"
+    },
+    "require": {
+        "phpmailer/phpmailer": "~6.0"
+    },
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    }
+}
