@@ -1,7 +1,7 @@
 
 <section class="container">
-    <div class="section-new px-5 py-5" >
-        <h2 class="section-heading mb-5">
+    <div class="section-new px-5 py-1" >
+        <h2 class="section-heading mb-5 mt-5">
             New Arrivals.
             <span class="text-muted">They will blow your mind.</span>
         </h2>

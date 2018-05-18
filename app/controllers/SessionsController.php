@@ -2,8 +2,11 @@
 
 namespace App\Controllers;
 use App\Domain\SessionsManager;
+use App\Exception\CustomException;
 
 class SessionsController {
+
+    private $session;
 
     public function create() {
         return view('index', []);
@@ -13,12 +16,15 @@ class SessionsController {
         try {
             if(isset($_POST['submit'])) {
                 $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-                (new SessionsManager)->getSession($email, $_POST['password']);
-                redirect('');
+                (new SessionsManager)->getSession($email, trim($_POST['password']));
+                redirect('comments');
             }
-        } catch (\Exception $e) {
+        } catch (CustomException $ce) {
+            $errors = explode("\n", $ce->getMessage());
+            return view('home.index', compact('errors'));
+        } catch(\Exception $e) {
             $errors = explode("\n", $e->getMessage());
-            return view('registrations.create', compact('errors'));
+            return view('home.index', compact('errors'));
         }
     }
 

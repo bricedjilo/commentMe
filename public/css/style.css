@@ -78,7 +78,7 @@ body {
     border-color: #08B2E3 !important;
 }
 
-.btn-outline-primary {
+.btn-outline-primary, .btn-outline-primary:active {
     color: #FFF;
     background-color: transparent;
     background-image: none;
@@ -87,8 +87,8 @@ body {
 
 .btn-outline-primary:hover {
     color:#fff;
-    background-color:#CE0044;
-    border-color:#CE0044;
+    background-color:#CE0044 !important;
+    border-color:#CE0044 !important;
 }
 
 .btn-outline-primary.focus, .btn-outline-primary:focus {
@@ -158,6 +158,24 @@ a:hover {
     -webkit-transform-origin:0 0;
 }
 
+table {
+    table-layout: fixed;
+    font-size: 0.8em;
+}
+
+/* .table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+} */
+
+.wrap {
+    word-wrap: break-word !important;
+}
+
+.admin-title {
+    color: white;
+}
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

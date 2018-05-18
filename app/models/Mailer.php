@@ -13,7 +13,7 @@ class Mailer extends PHPMailer {
         parent::__construct(true);
     }
 
-    public function getReadyMailer($smtp) {
+    public function getMailer($smtp) {
         $this->isSMTP();
         $this->Host = $smtp['smtp_host'];
         $this->SMTPAuth = true;
@@ -30,12 +30,7 @@ class Mailer extends PHPMailer {
         $this->addAddress($email);
         $this->Subject = "User Registration - Activation Email";
         $this->Body = "Click this link to activate your account. <a href='" . "link" . "'> Link </a>";
-        if($this->send()) {
-            return "You have registered and the activation mail is sent to your email.
-            Click the activation link to activate you account.";
-        } else {
-            throw new \Exception("Oops!! There was a problem your activation email could not be sent.");
-        }
+        return $this->send();
     }
 
 }

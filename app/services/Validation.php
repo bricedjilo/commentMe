@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use App\Services\CustomException;
+use App\Exception\{ CustomException, CustomExceptionType };
 
 class Validation {
 
@@ -23,7 +23,7 @@ class Validation {
             $errors .= ("Password must contain at least 1 lowercase letter. \n");
         if (!preg_match("/[^a-zA-Z0-9]+/", $password))
             $errors .= ("Password must contain letters, numbers and one special character only. \n");
-        if(strlen($errors) > 0) throw new CustomException("Validation", $errors);
+        if(strlen($errors) > 0) throw new CustomException(CustomExceptionType::VALIDATION, $errors);
         return true;
     }
 
@@ -34,7 +34,8 @@ class Validation {
                 . "&remoteip=" . $_SERVER['REMOTE_ADDR']
             ), true);
         if(!$response['success']) {
-            throw new \Exception("Please show that you are a Human by checking the \"I'm not a robot\" box.");
+            throw new CustomException(CustomExceptionType::VALIDATION,
+            "Please show that you are a Human by checking the \"I'm not a robot\" box.");
         }
         return true;
     }
@@ -43,6 +44,35 @@ class Validation {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return $email;
         }
-        throw new \Exception("$email is not a valid email address.");
+        throw new CustomException(CustomExceptionType::VALIDATION,
+        "$email is not a valid email address.");
+    }
+
+    public static function isNotEmpty($inputs) {
+        foreach($inputs as $key => $value) {
+            if(empty($inputs[$key] = trim($value))) {
+                throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Form field \"{$key}\" must not be empty.");
+            }
+        }
+        return $inputs;
+    }
+
+    public static function isInt($inputs) {
+        foreach($inputs as $key => $value) {
+            if ( ! filter_var($inputs[$key] = trim($value), FILTER_VALIDATE_INT,
+                    array("options" => array("min_range" => 0))) )
+            {
+                throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Form field \"$key\" must be provided.");
+            }
+        }
+        return true;
+    }
+
+    public static function isImageValid($name, $type, $size) {
+        $allowed_types = ['image/jpg', 'image/png', 'image/jpeg', 'image/gif'];
+        if ( ! in_array($type, $allowed_types) || $size > 1048576 || empty($name) ) {
+            throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Please provide an image that is less than 1MB");
+        }
+        return true;
     }
 }

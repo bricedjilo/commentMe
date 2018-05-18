@@ -4,18 +4,30 @@ namespace App\Models;
 
 class User {
 
+    protected $id;
     protected $firstname;
     protected $lastname;
     protected $email;
     protected $password;
     protected $reg_complete = 0;
     protected $active = 0;
+    protected $role;
+    protected $created_at;
+    protected $updated_at;
 
-    function __construct($firstname, $lastname, $email, $password) {
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->email = $email;
-        $this->password = $password;
+
+    public function __construct() { }
+
+    public static function withProperties($firstname, $lastname, $email, $password) {
+        $instance = new self();
+        $instance->firstname = $firstname;
+        $instance->lastname = $lastname;
+        $instance->email = $email;
+        $instance->password = $password;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     public function getFirstName() {
@@ -38,6 +50,22 @@ class User {
         return $this->active;
     }
 
+    public function getRole() {
+        return $this->role;
+    }
+
+    public function getCreatedAt() {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updated_at;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
     public function setFirstName($firstname) {
         $this->firstname = $firstname;
     }
@@ -56,6 +84,10 @@ class User {
 
     public function setActive($active) {
         $this->active = $active;
+    }
+
+    public function setRole($role) {
+        $this->role = $role;
     }
 
     public function toArray() {

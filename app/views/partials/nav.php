@@ -14,8 +14,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#shop-me">Shop</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#new-arrivals">Blog</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="#new-arrivals">New Products</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

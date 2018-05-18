@@ -8,15 +8,9 @@
 
             <div class="form-fields">
                 <h1 class="h3 mb-3 font-weight-normal text-muted">Create an account</h1>
-                <?php if(isset($errors)) : ?>
-                <div class="row align-items-center justify-content-center">
-                    <div class="alert alert-danger col-xs-12 col-md-6 col-lg-6">
-                        <?php foreach ($errors as $error) : ?>
-                            <p><?php echo $error; ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <?php endif; ?>
+
+                <?php require('app/views/partials/errors.php'); ?>
+
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <div class="form-group">

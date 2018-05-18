@@ -17,20 +17,21 @@ class RegistrationsController {
     public function store() {
         try {
             if(isset($_POST['submit']) && Validation::isCaptchaValid($_POST['g-recaptcha-response'])) {
-                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+                $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
+                $password = trim($_POST['password']);
                 $message = (new UsersManager)->create(
-                    filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING),
-                    filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING),
+                    trim(filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING)),
+                    trim(filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING)),
                     (Validation::isEmailValid($email)) ? $email : "",
-                    (Validation::isPasswordValid($_POST['password'], $_POST['conf-password'])) ?
-                        Utility::encode($_POST['password']) : ""
+                    (Validation::isPasswordValid($password, trim($_POST['conf-password']))) ?
+                        Utility::encode($password) : ""
                 );
                 redirect('');
-            } 
-        } catch (\Exception $e) {
+            }
+        } catch (CustomException $ce) {
             $errors = explode("\n", $e->getMessage());
             return view('registrations.create', compact('errors'));
-        }
+        } 
     }
 
 }
