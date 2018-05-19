@@ -4,7 +4,7 @@
     <div class="text-center form-section py-3 px-5 section-register">
 
         <form class="form-register" action="/register" method="post">
-            <a href="/"><h1 class="h3 mb-3 brand-register">Comment Me</h1></a>
+            <a href="/#top"><h1 class="h3 mb-3 brand-register">Comment Me</h1></a>
 
             <div class="form-fields">
                 <h1 class="h3 mb-3 font-weight-normal text-muted">Create an account</h1>

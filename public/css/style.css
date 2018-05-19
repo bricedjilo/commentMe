@@ -52,7 +52,6 @@ body {
   z-index: 10;
 }
 
-
 .carousel-item {
   /* min-height: 100vh; */
   background-color: #777;
@@ -163,12 +162,6 @@ table {
     font-size: 0.8em;
 }
 
-/* .table td.fit,
-.table th.fit {
-    white-space: nowrap;
-    width: 1%;
-} */
-
 .wrap {
     word-wrap: break-word !important;
 }
@@ -176,6 +169,18 @@ table {
 .admin-title {
     color: white;
 }
+
+/* Comments Page
+----------------------------------------------- */
+
+.date {
+    font-size: 0.8em;
+}
+
+.m-100 {
+    margin-top: 100px;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -211,7 +216,7 @@ table {
     }
 }
 
-@media (max-width: 544px) {
+@media (min-width: 576px) {
     #rc-imageselect, .g-recaptcha {
         background-color: red;
         transform: scale(0.77);
@@ -219,6 +224,28 @@ table {
         -webkit-transform:scale(0.77);
         transform-origin:0 0;
         -webkit-transform-origin:0 0;
+    }
+    .recent-post {
+        max-width: 40% !important;
+        color: red !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .recent-post {
+        min-width: 40% !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .recent-post {
+        min-width: 40% !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .comment-img {
+
     }
 }
 

@@ -6,21 +6,23 @@ use App\Models\User;
 
 class UsersManager {
 
-    public function create($firstname, $lastname, $email, $password) {
-        $user = new User($firstname, $lastname, $email, $password);
-        if ( App::get('database')->isPropDuplicate('users', ["email" => $model['email']], 'App\Models\User') )
+    public function create($user)
+    {
+        $user = (User::withProperties($user["firstname"], $user["lastname"], $user["email"], $user["password"]));
+
+        if ( App::get('database')->isPropDuplicate('users', ["email" => $user->getEmail()], 'App\Models\User') )
         {
             throw new CustomException(CustomExceptionType::SQL_CONSTRAINT,
-            "{$params['email']} is already in use. Please enter a different email address.");
+            "{$user->getEmail()} is already in use. Please enter a different email address.");
         }
-        if ( ! App::get('database')->insert('users', $user->toArray()) )
+        if ( ! App::get('database')->insert('users', $user->toArray(), 'App\Models\User') )
         {
             throw new CustomException(CustomExceptionType::SQL_STORE,
             "We were unable to create an account.");
         }
-        if ( App::get('mailer')->sendActivationEmail($email) )
+        if ( App::get('mailer')->sendActivationEmail($user->getEmail()) )
         {
-            return "You have registered and the activation mail is sent to your email.
+            return "You have registered and the activation mail has been sent to your email.
             Click the activation link to activate you account.";
         } else {
             throw new CustomException(CustomExceptionType::EMAIL,

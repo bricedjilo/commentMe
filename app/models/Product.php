@@ -9,6 +9,8 @@ class Product {
     protected $image;
     protected $description;
     protected $category_id;
+    protected $created_on;
+    protected $updated_on;
 
     public function __construct() { }
 
@@ -37,6 +39,14 @@ class Product {
 
     public function getCategory() {
         return $this->category_id;
+    }
+
+    public function getCreatedOn() {
+        return $this->created_on;
+    }
+
+    public function getUpdatedOn() {
+        return $this->updated_on;
     }
 
     public function setName($name) {

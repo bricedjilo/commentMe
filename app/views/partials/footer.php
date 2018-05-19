@@ -1,4 +1,6 @@
 
+    <?php require('app/views/partials/logout-modal.php'); ?>
+
         <!-- Scripts-->
         <script src="/public/js/jquery.min.js"></script>
         <script src="/public/js/bootstrap.min.js"></script>

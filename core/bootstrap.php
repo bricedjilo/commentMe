@@ -29,6 +29,8 @@ function view($name, ...$data)
     $path = explode('.', $name);
 
     $session = App::get('session');
+    $user = $session->get('user');
+    // var_dump($user); die();
     $successes = App::get('session')->get('successes');
     $errors = App::get('session')->get('errors');
     $sucesses = ($successes) ?  $successes : [];

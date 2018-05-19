@@ -2,7 +2,7 @@
 <?php require('app/views/partials/head.php'); ?>
 <?php require('app/views/partials/nav.php'); ?>
 
-<main role="main">
+<main role="main" id="top">
     <?php require('app/views/partials/carousel.php'); ?>
 
     <div class="marketing">

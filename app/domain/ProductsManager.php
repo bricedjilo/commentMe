@@ -21,6 +21,10 @@ class ProductsManager {
             ]);
     }
 
+    public function getRecentProducts($number) {
+        return App::get('database')->recent("products", $number, 'App\Models\Product');
+    }
+
     public function create($product, $image)
     {
         if ( ! App::get('database')->isPropDuplicate(

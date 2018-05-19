@@ -30,6 +30,13 @@ class QueryBuilder {
         return $statement->fetchAll();
     }
 
+    public function recent($table, $number, $class) {
+        $sql = "SELECT * FROM {$table} ORDER BY created_on DESC LIMIT {$number}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, $class);
+    }
+
     public function insert($table, $model, $intoClass)
     {
         $sql = sprintf( 'INSERT INTO %s (%s) VALUES (%s)',
@@ -42,7 +49,7 @@ class QueryBuilder {
 
     public function delete($table, $params)
     {
-        $sql = "DELETE FROM {$table} WHERE " . $this->getAndConditions($params);
+        $sql = "DELETE FROM {$table} WHERE " . $this->buildAndConditions($params);
         $statement = $this->pdo->prepare($sql);
         return $statement->execute($params);
     }
@@ -68,7 +75,7 @@ class QueryBuilder {
         return $statement->fetchAll(\PDO::FETCH_CLASS, $intoClass);
     }
 
-    public function getAndConditions($params) {
+    public function buildAndConditions($params) {
         $conditions = "";
         $keys = array_keys($params);
         for ( $i=0; $i<count($keys); $i++ ) {

@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top main-navbar" id="mainNav">
-    <a class="navbar-brand" href="">Comment Me</a>
+    <a class="navbar-brand" href="/">Comment Me</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -48,11 +48,11 @@
                 <h4 class="admin-title">Admin</h4>
             </li>
         </ul>
-        <?php if(isset($session) ) : ?>
+        <?php if(isset($user) ) : ?>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#logout-modal">
-                    Welcome <?php echo $session->get("firstname") . " " . $session->get("lastname"); ?>
+                    Welcome <?php echo "{$user->getFirstName()} {$user->getLastName()}"; ?>
                 </a>
             </li>
             <li class="nav-item">

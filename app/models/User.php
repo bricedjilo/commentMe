@@ -11,7 +11,7 @@ class User {
     protected $password;
     protected $reg_complete = 0;
     protected $active = 0;
-    protected $role;
+    protected $role = "subscriber";
     protected $created_at;
     protected $updated_at;
 
@@ -24,6 +24,7 @@ class User {
         $instance->lastname = $lastname;
         $instance->email = $email;
         $instance->password = $password;
+        return $instance;
     }
 
     public function getId() {

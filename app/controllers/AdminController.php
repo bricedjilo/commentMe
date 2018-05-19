@@ -28,7 +28,7 @@ class AdminController {
     public function create() {
         try {
             $categories = (new CategoriesManager)->getAllCategories();
-            return view('admin.create', compact('categories'), compact('successes'), compact('errors'));
+            return view('admin.create', compact('categories'));
         } catch (\Exception $e) {
             App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
             redirect('admin/products/create');
@@ -39,7 +39,7 @@ class AdminController {
 
     public function products() {
         $products = (new ProductsManager())->getAllProductsAndCategories();
-        return view('admin.products', compact('products'), compact('errors'));
+        return view('admin.products', compact('products'));
     }
 
 

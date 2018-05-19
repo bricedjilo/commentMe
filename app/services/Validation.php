@@ -33,7 +33,7 @@ class Validation {
                 . $captcha
                 . "&remoteip=" . $_SERVER['REMOTE_ADDR']
             ), true);
-        if(!$response['success']) {
+        if( ! $response['success'] ) {
             throw new CustomException(CustomExceptionType::VALIDATION,
             "Please show that you are a Human by checking the \"I'm not a robot\" box.");
         }
@@ -42,7 +42,7 @@ class Validation {
 
     public static function isEmailValid($email) {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $email;
+            return true;
         }
         throw new CustomException(CustomExceptionType::VALIDATION,
         "$email is not a valid email address.");

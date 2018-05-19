@@ -21,11 +21,15 @@ class SessionsController {
             }
         } catch (CustomException $ce) {
             $errors = explode("\n", $ce->getMessage());
-            return view('home.index', compact('errors'));
+            return redirect('');
         } catch(\Exception $e) {
-            $errors = explode("\n", $e->getMessage());
-            return view('home.index', compact('errors'));
+            App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
+            return redirect('');
         }
     }
 
+    public function destroy() {
+        (new SessionsManager)->delete();
+        redirect('');
+    }
 }
