@@ -4,12 +4,13 @@
         <form class="form-signin" action="/login" method="post">
 
             <?php require('app/views/partials/errors.php'); ?>
+            <?php require('app/views/partials/success.php'); ?>
 
             <div>
                 <h1 class="h3 mb-3 text-muted">Sign In</h1>
                 <div class="form-group">
-                    <label for="email" class="sr-only">Email address</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Email address"
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username"
                         required autofocus>
                 </div>
                 <div class="form-group">

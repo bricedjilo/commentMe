@@ -71,7 +71,7 @@
                         <img class="mr-3 img-fluid comment-img" src="/public/images/users/user-1.png" alt="user image">
                         <div class="media-body">
                             <h5 class="mt-0 mb-1 text-muted font-weight-bold comment-title ">
-                                <span> <?php echo $comment["email"] ?> </span> &nbsp; | &nbsp;
+                                <span> <?php echo $comment["username"] ?> </span> &nbsp; | &nbsp;
                                 <span class="date text-muted">
                                     <?php echo date( 'M d, y h:i a', strtotime($comment["created_on"]) ); ?>
                                 </span>

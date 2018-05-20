@@ -8,7 +8,7 @@
                 <?php require('app/views/partials/success.php'); ?>
             </div>
 
-            <p class="mt-5">Return to <a href="/">home</a></p>
+            <p class="mt-5">Return to <a href="/#login">home</a></p>
 
         </div>
 

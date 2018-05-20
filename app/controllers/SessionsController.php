@@ -14,11 +14,10 @@ class SessionsController {
 
     public function store() {
         try {
-            if(isset($_POST['submit'])) {
-                $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-                (new SessionsManager)->getSession($email, trim($_POST['password']));
-                redirect('comments');
-            }
+            $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
+            $password = trim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
+            (new SessionsManager)->getSession($username, $password);
+            redirect('comments');
         } catch (CustomException $ce) {
             $errors = explode("\n", $ce->getMessage());
             return redirect('');

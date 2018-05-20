@@ -49,7 +49,7 @@ class ProductsManager {
 
     public function getProductComments($id, $limit) {
         return App::get('database')->getFromWhereIdOrderBy(
-            ["product_id", "title", "body","created_on", "firstname", "lastname", "email"],
+            ["product_id", "title", "body","created_on", "firstname", "lastname", "email", "username"],
             ["comments", "users"],
             ["comments.created_by = users.id"],
             ["product_id" => $id],

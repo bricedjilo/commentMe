@@ -46,7 +46,7 @@ class RegistrationsController {
                 }
                 $message = (new UsersManager)->create($user);
                 App::get('session')->set(["successes" => [$message]]);
-                redirect('activation');
+                redirect('');
             }
         } catch (\Exception $e) {
             App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);

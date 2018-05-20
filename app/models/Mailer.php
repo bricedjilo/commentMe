@@ -29,7 +29,7 @@ class Mailer extends PHPMailer {
     public function sendActivationEmail($email) {
         $this->addAddress($email);
         $this->Subject = "User Registration - Activation Email";
-        $this->Body = "Click this link to activate your account. <a href='" . "link" . "'> Link </a>";
+        $this->Body = "Click this link to activate your account. <a href='" . "activate" . "'> Link </a>";
         return $this->send();
     }
 

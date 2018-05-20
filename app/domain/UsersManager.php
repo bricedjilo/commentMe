@@ -33,8 +33,7 @@ class UsersManager {
         }
         if ( App::get('mailer')->sendActivationEmail($user->getEmail()) )
         {
-            return "You have registered and the activation link has been sent to your inbox.
-            Click the activation link to activate you account.";
+            return "Your account has been created. You may log in.";
         } else {
             throw new CustomException(CustomExceptionType::EMAIL,
             "Oops!! There was a problem. Your activation email could not be sent.");

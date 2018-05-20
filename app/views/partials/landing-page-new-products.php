@@ -8,31 +8,28 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-2.jpg" alt="new arrival">
-                    <div class="card-img-overlay text-left">
-                        NEW
-                    </div>
+                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-3.jpg" alt="new arrival">
                     <div class="card-body">
                         <p class="card-text">Some quic the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-primary" name="button">READ AND COMMENT</button>
+                        <button type="button" class="btn btn-primary text-uppercase" name="button">read more</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-2.jpg" alt="new arrival">
+                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-5.jpg" alt="new arrival">
                     <div class="card-body">
                         <p class="card-text">Some quic the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-primary" name="button">READ AND COMMENT</button>
+                        <button type="button" class="btn btn-primary text-uppercase" name="button">read more</button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="card">
-                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-2.jpg" alt="new arrival">
+                    <img class="card-img-top img-fluid" src="/public/images/blog/new-arrival-6.jpg" alt="new arrival">
                     <div class="card-body">
                         <p class="card-text">Some quic the bulk of the card's content.</p>
-                        <button type="button" class="btn btn-primary" name="button">READ AND COMMENT</button>
+                        <button type="button" class="btn btn-primary text-uppercase" name="button">read more</button>
                     </div>
                 </div>
             </div>
