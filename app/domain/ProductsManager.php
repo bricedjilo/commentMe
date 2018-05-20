@@ -13,6 +13,10 @@ class ProductsManager {
         return App::get('database')->all('products', 'App\Models\Product');
     }
 
+    public function findById($id) {
+        return App::get('database')->findByProperty('products', ["id" => $id], 'App\Models\Product');
+    }
+
     public function getAllProductsAndCategories() {
         return App::get('database')->innerJoinOn(
             'products', 'categories', ['products.category_id', 'categories.id'], [
@@ -21,8 +25,43 @@ class ProductsManager {
             ]);
     }
 
+    public function getProductAndCategory($id) {
+        return App::get('database')->getFromWhereIdOrderBy(
+            ["products.id", "products.name", "products.image", "created_on",
+            "products.description", "categories.category"],
+            ["products", "categories"],
+            ["products.category_id = categories.id"],
+            ["products.id" => $id],
+            "", ""
+        );
+    }
+
     public function getRecentProducts($number) {
-        return App::get('database')->recent("products", $number, 'App\Models\Product');
+        // return App::get('database')->recent("products", $number, 'App\Models\Product');
+        return App::get('database')->getFromWhereIdOrderBy(
+            ["products.id", "products.name", "products.image", "created_on",
+            "products.description", "categories.category"],
+            ["products", "categories"],
+            ["products.category_id = categories.id"],
+            [], "created_on", $number
+        );
+    }
+
+    public function getProductComments($id, $limit) {
+        return App::get('database')->getFromWhereIdOrderBy(
+            ["product_id", "title", "body","created_on", "firstname", "lastname", "email"],
+            ["comments", "users"],
+            ["comments.created_by = users.id"],
+            ["product_id" => $id],
+            "created_on",
+            $limit
+        );
+    }
+
+    public function getProductCommentsCount($id) {
+        return App::get('database')->countCommentsById(
+            "comments", ["product_id" => $id]
+        );
     }
 
     public function create($product, $image)

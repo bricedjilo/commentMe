@@ -16,6 +16,23 @@ class ProductsController {
         return view('products.index', compact('products'));
     }
 
+    public function show($id) {
+        $productManager = new ProductsManager;
+        $categoriesManager = new CategoriesManager;
+        $categories = $categoriesManager->getAllCategories();
+        $recentProducts = $productManager->getRecentProducts(5);
+        $product = $productManager->getProductAndCategory($id)[0];
+        $productComments= $productManager->getProductComments($id, 5);
+        $count = $productManager->getProductCommentsCount($product["id"])[0];
+        return view('products.show',
+            compact('categories'),
+            compact('recentProducts'),
+            compact('product'),
+            compact('productComments'),
+            compact('count')
+        );
+    }
+
     public function store()
     {
         try {
@@ -34,10 +51,10 @@ class ProductsController {
                 $product["image"] = $image_name;
             }
 
-            (new ProductsManager)->create($product, $image);
-            App::get('session')->set(["successes" => ["Product \"{$product['name']}\" has been added."]]);
-            redirect('admin/products/create');
-
+            if( (new ProductsManager)->create($product, $image) ) {
+                App::get('session')->set(["successes" => ["Product \"{$product['name']}\" has been added."]]);
+                redirect('admin/products/create');
+            }
         } catch (\Exception $e) {
             App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
             redirect('admin/products/create');
@@ -46,14 +63,13 @@ class ProductsController {
 
     public function destroy($id) {
         try {
-            (new ProductsManager())->delete($id);
-            redirect('admin/products');
+            if( (new ProductsManager())->delete($id) ) {
+                redirect('admin/products');
+            }
         } catch (\Exception $e) {
             App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
             redirect('admin/products');
         }
-
-
     }
 
 }

@@ -3,14 +3,25 @@
 namespace App\Domain;
 use App\Core\App;
 use App\Models\User;
+use App\Exception\{ CustomException, CustomExceptionType };
 
 class UsersManager {
 
     public function create($user)
     {
-        $user = (User::withProperties($user["firstname"], $user["lastname"], $user["email"], $user["password"]));
+        $user = (User::withProperties(
+                    $user["firstname"], $user["lastname"], $user["username"],
+                    $user["email"], $user["password"]
+                ));
 
-        if ( App::get('database')->isPropDuplicate('users', ["email" => $user->getEmail()], 'App\Models\User') )
+        if ( App::get('database')->isPropDuplicate('users',
+                ["username" => $user->getUsername()], 'App\Models\User') )
+        {
+            throw new CustomException(CustomExceptionType::SQL_CONSTRAINT,
+            "{$user->getUsername()} is already in use. Please enter a different username.");
+        }
+        if ( App::get('database')->isPropDuplicate(
+                'users', ["email" => $user->getEmail()], 'App\Models\User') )
         {
             throw new CustomException(CustomExceptionType::SQL_CONSTRAINT,
             "{$user->getEmail()} is already in use. Please enter a different email address.");
@@ -22,7 +33,7 @@ class UsersManager {
         }
         if ( App::get('mailer')->sendActivationEmail($user->getEmail()) )
         {
-            return "You have registered and the activation mail has been sent to your email.
+            return "You have registered and the activation link has been sent to your inbox.
             Click the activation link to activate you account.";
         } else {
             throw new CustomException(CustomExceptionType::EMAIL,

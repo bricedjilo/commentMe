@@ -7,6 +7,7 @@ class User {
     protected $id;
     protected $firstname;
     protected $lastname;
+    protected $username;
     protected $email;
     protected $password;
     protected $reg_complete = 0;
@@ -18,11 +19,12 @@ class User {
 
     public function __construct() { }
 
-    public static function withProperties($firstname, $lastname, $email, $password) {
+    public static function withProperties($firstname, $lastname, $username, $email, $password) {
         $instance = new self();
         $instance->firstname = $firstname;
         $instance->lastname = $lastname;
         $instance->email = $email;
+        $instance->username = $username;
         $instance->password = $password;
         return $instance;
     }
@@ -41,6 +43,10 @@ class User {
 
     public function getEmail() {
         return $this->email;
+    }
+
+    public function getUsername() {
+        return $this->username;
     }
 
     public function getRegComplete() {

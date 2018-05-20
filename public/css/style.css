@@ -42,7 +42,6 @@ body {
     color: #FFF;
 }
 
-
 .carousel {
   margin-bottom: 4rem;
 }
@@ -53,7 +52,6 @@ body {
 }
 
 .carousel-item {
-  /* min-height: 100vh; */
   background-color: #777;
   padding: 0;
   height: 100vh;
@@ -107,8 +105,8 @@ body {
     background: #fbfbfb;
 }
 
-.form-section {
-    background-color: #f5f5f5;
+.form-section, .activation-section {
+    background-color: #f5f5f5 !important;
     justify-content: center;
 }
 
@@ -132,12 +130,6 @@ body {
   font-weight: 300;
   line-height: 1;
   letter-spacing: -.05rem;
-}
-
-.section-register {
-    min-height: 100vh !important;
-    max-height: 100vh !important;
-
 }
 
 .form-control:focus {
@@ -174,6 +166,10 @@ table {
 ----------------------------------------------- */
 
 .date {
+    font-size: 0.8em;
+}
+
+.comment-title {
     font-size: 0.8em;
 }
 
@@ -218,10 +214,9 @@ table {
 
 @media (min-width: 576px) {
     #rc-imageselect, .g-recaptcha {
-        background-color: red;
-        transform: scale(0.77);
+        transform: scale(1);
         min-width: 100% !important;
-        -webkit-transform:scale(0.77);
+        -webkit-transform:scale(1);
         transform-origin:0 0;
         -webkit-transform-origin:0 0;
     }
@@ -238,6 +233,13 @@ table {
 }
 
 @media (min-width: 992px) {
+    #rc-imageselect, .g-recaptcha {
+        transform:scale(1);
+        -webkit-transform:scale(1);
+        transform-origin:0 0;
+        -webkit-transform-origin:0 0;
+    }
+
     .recent-post {
         min-width: 40% !important;
     }

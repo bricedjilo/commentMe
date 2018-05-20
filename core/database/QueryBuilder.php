@@ -30,6 +30,34 @@ class QueryBuilder {
         return $statement->fetchAll();
     }
 
+    public function getFromWhereIdOrderBy($props, $tables, $conditions, $params, $orderBy, $limit)
+    {
+        $sql = "SELECT " . implode(', ', $props) . " FROM " . implode(', ', $tables);
+        $sql .= " WHERE " . implode(', ', $conditions);
+        $sql .= ($params) ? " AND " . $this->buildAndConditions($params) : "";
+        $sql .= ($orderBy) ? " ORDER BY $orderBy DESC" : "";
+        $sql .= ($limit) ? " LIMIT " . $limit : "";
+
+        $statement = $this->pdo->prepare($sql);
+        foreach ($params as $key => $value) {
+            $statement->bindParam(':value', $params[$key]);
+        }
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function countCommentsById($table, $params) {
+        $sql = "SELECT COUNT(*) count FROM {$table}";
+        $sql .= " WHERE " . $this->buildAndConditions($params);
+
+        $statement = $this->pdo->prepare($sql);
+        foreach ($params as $key => $value) {
+            $statement->bindParam(':value', $params[$key]);
+        }
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function recent($table, $number, $class) {
         $sql = "SELECT * FROM {$table} ORDER BY created_on DESC LIMIT {$number}";
         $statement = $this->pdo->prepare($sql);
@@ -75,11 +103,11 @@ class QueryBuilder {
         return $statement->fetchAll(\PDO::FETCH_CLASS, $intoClass);
     }
 
-    public function buildAndConditions($params) {
+    private function buildAndConditions($params) {
         $conditions = "";
         $keys = array_keys($params);
         for ( $i=0; $i<count($keys); $i++ ) {
-            $conditions .= " $keys[$i] = :$keys[$i] ";
+            $conditions .= " $keys[$i] = :value ";
             if ( $i == count($keys)-1 ) {
                 break;
             }

@@ -6,13 +6,25 @@ class Router {
 
     protected $routes = [
         'GET' => [
-            'delete' => []
+            'id' => []
         ],
-        'POST' => []
+        'POST' => [],
+        'DELETE' => []
     ];
 
     public function get($uri, $controller) {
-        $this->routes['GET'][$uri] = $controller;
+        $segments = explode('/', $uri);
+        $count = count(array_filter($segments));
+        $i = 0;
+        for ( ; $i < $count; $i++ ) {
+            if ( strcmp($segments[$i], "{id}") == 0 && $i == $count-1 ) {
+                $this->routes['GET']['id'][implode('/', array_slice($segments, 0, $i))] = $controller;
+                break;
+            }
+        }
+        if ( $i == $count ) {
+            $this->routes['GET'][$uri] = $controller;
+        }
     }
 
     public function post($uri, $controller) {
@@ -20,7 +32,7 @@ class Router {
     }
 
     public function delete($uri, $controller) {
-        $this->routes['GET']["delete"][explode('/', $uri)[0]] = $controller;
+        $this->routes['DELETE'][explode('/', $uri)[0]] = $controller;
     }
 
     public static function load($file) {
@@ -34,15 +46,20 @@ class Router {
     }
 
     public function direct($uri, $requestType) {
-        if(array_key_exists($uri, $this->routes[$requestType])) {
+        $id = null;
+        $segments = explode('/', $uri);
+        $count = count(array_filter($segments));
+
+        if( array_key_exists( $count-1, $segments ) && filter_var($segments[$count-1], FILTER_VALIDATE_INT) )
+        {
+            $id = $segments[$count-1];
             return $this->callAction(
-                null, ...explode('@', $this->routes[$requestType][$uri])
-            );
-        }
-        $uri = explode('/', $uri);
-        if(array_key_exists("delete", $this->routes[$requestType])) {
+                $id, ...explode('@', $this->routes[$requestType]["id"][
+                implode('/', array_slice($segments, 0, $count-1))
+            ]));
+        } else if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->callAction(
-                $uri[1], ...explode('@', $this->routes[$requestType]["delete"][$uri[0]])
+                $id, ...explode('@', $this->routes[$requestType][$uri])
             );
         }
         throw new \Exception("Route is not defined for " . $uri);
@@ -56,10 +73,8 @@ class Router {
         }
         if(! $id) {
             return $controllerClass->$action();
-        } else {
-            return $controllerClass->$action($id);
         }
-
+        return $controllerClass->$action($id);    
     }
 
 }

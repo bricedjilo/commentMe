@@ -17,6 +17,9 @@ class RegistrationsController {
     }
 
     public function show() {
+        if ( ! $message) {
+            redirect('');
+        }
         return view('registrations.activation');
     }
 
@@ -25,16 +28,21 @@ class RegistrationsController {
             if(Validation::isCaptchaValid($_POST['g-recaptcha-response']))
             {
                 $email = trim(filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL));
-                $password = trim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_EMAIL));
-                $confPassword = trim(filter_input(INPUT_POST, "conf-password", FILTER_SANITIZE_EMAIL));
+                $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));
+                $password = trim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING));
+                $confPassword = trim(filter_input(INPUT_POST, "conf-password", FILTER_SANITIZE_STRING));
 
                 $user = Validation::isNotEmpty([
                     "firstname" => filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_STRING),
                     "lastname" => filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_STRING)
                 ]);
-                if( Validation::isEmailValid($email) && Validation::isPasswordValid($password, $confPassword) ) {
+                if ( Validation::isEmailValid($email) &&
+                    Validation::isPasswordValid($password, $confPassword) &&
+                    Validation::isUsernameValid($username)
+                ) {
                     $user["email"] = $email;
                     $user["password"] = Utility::encode($password);
+                    $user["username"] = $username;
                 }
                 $message = (new UsersManager)->create($user);
                 App::get('session')->set(["successes" => [$message]]);
