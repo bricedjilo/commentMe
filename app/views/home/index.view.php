@@ -7,11 +7,11 @@
 
     <div class="marketing">
 
-        <div class="container" id="departments">
+        <div class="container" id="categories">
             <hr class="divider" >
         </div>
 
-        <?php require('app/views/partials/departments.php'); ?>
+        <?php require('app/views/partials/categories.php'); ?>
 
         <div class="container" id="shop-me">
             <hr class="divider" >
@@ -31,7 +31,7 @@
 
         <?php require('app/views/partials/login-section.php'); ?>
 
-    </div><!-- /.marketing -->
+    </div>
 
     <div class="container">
         <hr class="divider" >

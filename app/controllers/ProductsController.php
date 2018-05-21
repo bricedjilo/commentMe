@@ -12,24 +12,28 @@ use App\Services\Validation;
 class ProductsController {
 
     public function index() {
-        $products = (new ProductsManager())->getAllProducts();
-        return view('products.index', compact('products'));
+        redirect('');
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $productManager = new ProductsManager;
         $categoriesManager = new CategoriesManager;
         $categories = $categoriesManager->getAllCategories();
         $recentProducts = $productManager->getRecentProducts(5);
+        $archives = $productManager->getProductsArchives();
         $product = $productManager->getProductAndCategory($id)[0];
         $productComments= $productManager->getProductComments($id, 5);
         $count = $productManager->getProductCommentsCount($product["id"])[0];
+
+        var_dump($product); die();
         return view('products.show',
             compact('categories'),
             compact('recentProducts'),
             compact('product'),
             compact('productComments'),
-            compact('count')
+            compact('count'),
+            compact('archives')
         );
     }
 

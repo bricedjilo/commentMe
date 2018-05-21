@@ -9,14 +9,27 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto" id="navigation">
                 <li class="nav-item">
-                    <a class="nav-link" href="#departments">Departments <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href=<?php if ($user) echo "/categories"; else echo "/#categories";?>>
+                        Categories <span class="sr-only">(current)</span>
+                    </a>
                 </li>
+                <?php if ( ! $user ) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#shop-me">Shop</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="#new-arrivals">New Products</a>
+                <?php endif; ?>
+                <li class="nav-item">
+                    <a class="nav-link" href=<?php if ($user) echo "/comments"; else echo "/#new-arrivals";?>>
+                        New Products <span class="sr-only">(current)</span>
+                    </a>
                 </li>
+                <?php if (isAdmin()) : ?>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-info btn-sm text-white" href="/admin">
+                        Admin <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <?php endif; ?>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <?php if($user) : ?>

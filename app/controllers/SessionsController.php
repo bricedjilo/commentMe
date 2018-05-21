@@ -29,6 +29,7 @@ class SessionsController {
 
     public function destroy() {
         (new SessionsManager)->delete();
+        App::get('session')->set(["successes" => []]);
         redirect('');
     }
 }

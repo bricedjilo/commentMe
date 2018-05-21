@@ -1,5 +1,5 @@
 
-<?php if(!empty(array_filter($successes))) : ?>
+<?php if($successes && !empty(array_filter($successes))) : ?>
 <div class="row align-items-center justify-content-center">
     <div class="alert alert-success">
         <?php foreach ($successes as $success) : ?>

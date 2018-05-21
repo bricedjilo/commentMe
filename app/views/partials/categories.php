@@ -1,6 +1,6 @@
 
-<section id="departments" class="container">
-    <h2 class="section-heading mb-5"><span class="text-muted">Departments</span></h2>
+<section id="categories" class="container">
+    <h2 class="section-heading mb-5"><span class="text-muted">Categories</span></h2>
     <div class="row px-5 py-1">
         <div class="col-md-6 col-lg-6">
             <div class="row mb-3">
@@ -12,7 +12,9 @@
                 <div class="col-xs-12">
                     <ul class="list-unstyled">
                         <li class="media">
-                            <img class="mr-3 img-fluid" src="/public/images/depart/depart-1.jpg" alt="Depart - Clothing">
+                            <img class="mr-3 img-fluid"
+                                src=<?php echo "/public/images/depart/depart-1.jpg"; ?>
+                                alt="Depart - Clothing">
                             <div class="media-body">
                                 <h5 class="mt-0 mb-1">Clothing</h5>
                                 Cras sit amet nibh libero, iitudin. Co. Donec lacinia congue felis in faucibus.

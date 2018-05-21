@@ -29,7 +29,7 @@
                     <?php echo date( 'M d, Y h:i a', strtotime($product["created_on"]) ); ?> &nbsp; | &nbsp;
                 <i class="far fa-comment"></i> &nbsp; <?php echo $count["count"]; ?> &nbsp; | &nbsp;
                 <i class="far fa-user"></i> &nbsp; Admin &nbsp; | &nbsp;
-                <i class="far fa-folder"></i> &nbsp; <a href=""> <?php
+                <i class="far fa-folder"></i> &nbsp; <a href=<?php echo "/categories/" . $product["category_id"] ?>> <?php
                 echo $product["category"]; ?> </a>
             </div>
 
@@ -47,12 +47,9 @@
             <?php require('app/views/partials/errors.php'); ?>
             <?php require('app/views/partials/success.php'); ?>
 
+            <?php if ( $user ) : ?>
             <div class="mb-5 mt-4">
                 <form class="" action="/comments" method="post">
-                    <div class="form-group">
-                        <label for="title" class="text-muted">Title</label>
-                        <input class="form-control" name="title" id="title" rows="5" >
-                    </div>
                     <div class="form-group">
                         <label for="body" class="text-muted">Comment</label>
                         <textarea class="form-control" name="body" id="body" rows="5"></textarea>
@@ -61,6 +58,9 @@
                     <button type="submit" class="btn btn-primary">Comment</button>
                 </form>
             </div>
+            <?php else : ?>
+                <a  href="/#login" class="btn btn-primary mb-5">Comment</a>
+            <?php endif; ?>
 
             <br />
 

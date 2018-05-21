@@ -15,14 +15,17 @@ class CommentsController {
         $productManager = new ProductsManager;
         $categories = $categoriesManager->getAllCategories();
         $recentProducts = $productManager->getRecentProducts(5);
+        $archives = $productManager->getProductsArchives();
         $product = $recentProducts[0];
         $productComments= $productManager->getProductComments($product["id"], 5);
         $count = $productManager->getProductCommentsCount($product["id"])[0];
+
         return view('comments.index',
             compact('recentProducts'),
             compact('product'),
             compact('categories'),
             compact('productComments'),
+            compact('archives'),
             compact('count')
         );
     }
@@ -33,7 +36,6 @@ class CommentsController {
             $created_by = App::get('session')->get('user')->getId();
 
             $comment = Validation::isNotEmpty([
-                "title" => filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING),
                 "body" => filter_input(INPUT_POST, "body", FILTER_SANITIZE_STRING)
             ]);
 
@@ -45,7 +47,7 @@ class CommentsController {
             }
 
             if( (new CommentsManager)->create($comment) ) {
-                App::get('session')->set(["successes" => ["Your Comment \"{$comment['title']}\" has been added."]]);
+                App::get('session')->set(["successes" => ["Your Comment has been added."]]);
                 redirect("products/{$product_id}");
             }
         } catch (\Exception $e) {

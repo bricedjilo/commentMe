@@ -43,3 +43,8 @@ function view($name, ...$data)
 function redirect($path) {
     header("Location: /{$path}");
 }
+
+function isAdmin() {
+    $user = App::get('session')->get('user');
+    return $user && strcmp($user->getRole(), 'admin') == 0;
+}

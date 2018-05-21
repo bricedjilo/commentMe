@@ -27,7 +27,7 @@ class ProductsManager {
 
     public function getProductAndCategory($id) {
         return App::get('database')->getFromWhereIdOrderBy(
-            ["products.id", "products.name", "products.image", "created_on",
+            ["products.id", "products.name", "products.image", "category_id", "created_on",
             "products.description", "categories.category"],
             ["products", "categories"],
             ["products.category_id = categories.id"],
@@ -37,9 +37,8 @@ class ProductsManager {
     }
 
     public function getRecentProducts($number) {
-        // return App::get('database')->recent("products", $number, 'App\Models\Product');
         return App::get('database')->getFromWhereIdOrderBy(
-            ["products.id", "products.name", "products.image", "created_on",
+            ["products.id", "products.name", "products.image", "category_id", "created_on",
             "products.description", "categories.category"],
             ["products", "categories"],
             ["products.category_id = categories.id"],
@@ -61,6 +60,35 @@ class ProductsManager {
     public function getProductCommentsCount($id) {
         return App::get('database')->countCommentsById(
             "comments", ["product_id" => $id]
+        );
+    }
+
+    public function getProductsOfCategory($id) {
+        return App::get('database')->getFromWhereIdOrderBy(
+            ["products.id", "created_on", "name", "description", "image", "category_id", "categories.category"],
+            ["products", "categories"],
+            ["category_id = categories.id"],
+            ["category_id" => $id],
+            "", ""
+        );
+    }
+
+    public function getProductsArchives() {
+        return App::get('database')->getFromGroupBy(
+            ["DATE(created_on) date"],
+            "products",
+            "DATE(created_on)",
+            "created_on"
+        );
+    }
+
+    public function getProductsArchivesFor($date) {
+        return App::get('database')->getFromWhereIdOrderBy(
+            ["products.id", "created_on", "name", "description", "image", "category_id", "categories.category"],
+            ["products", "categories"],
+            ["category_id = categories.id"],
+            ["DATE(created_on)" => $date],
+            "created_on", ""
         );
     }
 

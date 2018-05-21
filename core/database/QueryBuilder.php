@@ -38,10 +38,23 @@ class QueryBuilder {
         $sql .= ($orderBy) ? " ORDER BY $orderBy DESC" : "";
         $sql .= ($limit) ? " LIMIT " . $limit : "";
 
+        // die($sql);
+
         $statement = $this->pdo->prepare($sql);
         foreach ($params as $key => $value) {
             $statement->bindParam(':value', $params[$key]);
         }
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+    public function getFromGroupBy($props, $table, $groupBy, $orderBy)
+    {
+        $sql = "SELECT " . implode(', ', $props) . " , COUNT(*) count FROM {$table}";
+        $sql .= " GROUP BY {$groupBy}";
+        $sql .= " ORDER BY {$orderBy} DESC";
+
+        $statement = $this->pdo->prepare($sql);
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -56,13 +69,6 @@ class QueryBuilder {
         }
         $statement->execute();
         return $statement->fetchAll();
-    }
-
-    public function recent($table, $number, $class) {
-        $sql = "SELECT * FROM {$table} ORDER BY created_on DESC LIMIT {$number}";
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, $class);
     }
 
     public function insert($table, $model, $intoClass)
@@ -114,5 +120,12 @@ class QueryBuilder {
             $conditions .= "AND";
         }
         return $conditions;
+    }
+
+    private function bindValues($params, $statement) {
+        foreach ($params as $key => $value) {
+            $statement->bindParam(':value', $params[$key]);
+        }
+        return $statement;
     }
 }

@@ -1,21 +1,23 @@
 
 <aside class="col-12 col-md-4">
-    <div class="p-3 mb-3 bg-light rounded">
-        <h4 class="text-muted font-weight-bold"><?php echo $product["name"]; ?></h4>
-        <p class="mb-0"><?php echo substr($product["description"], 0, 100) . " ..."; ?>
-        </p>
-    </div>
+    <?php if ( isset($product) ) : ?>
+        <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="text-muted font-weight-bold"><?php echo $product["name"]; ?></h4>
+            <p class="mb-0"><?php echo substr($product["description"], 0, 100) . " ..."; ?>
+            </p>
+        </div>
+    <?php endif; ?>
     <div class="p-3">
         <h4 class="text-muted">Categories</h4>
         <ol class="list-unstyled mb-0">
             <?php foreach ($categories as $category) : ?>
-                <li><a href="#"><?php echo $category->getCategory(); ?></a></li>
+                <li><a href="/categories/<?php echo $category->getId(); ?>"><?php echo $category->getCategory(); ?></a></li>
             <?php endforeach; ?>
         </ol>
     </div>
 
     <div class="p-3">
-        <h4 class="text-muted">Recent Posts</h4>
+        <h4 class="text-muted">Hot And New Products</h4>
         <ul class="list-unstyled mt-4">
             <?php foreach($recentProducts as $recent) : ?>
                 <li class="media mb-3">
@@ -39,18 +41,12 @@
     <div class="p-3">
         <h4 class="text-muted">Archives</h4>
         <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2014</a></li>
-            <li><a href="#">February 2014</a></li>
-            <li><a href="#">January 2014</a></li>
-            <li><a href="#">December 2013</a></li>
-            <li><a href="#">November 2013</a></li>
-            <li><a href="#">October 2013</a></li>
-            <li><a href="#">September 2013</a></li>
-            <li><a href="#">August 2013</a></li>
-            <li><a href="#">July 2013</a></li>
-            <li><a href="#">June 2013</a></li>
-            <li><a href="#">May 2013</a></li>
-            <li><a href="#">April 2013</a></li>
+            <?php foreach ($archives as $archive) : ?>
+                <li><a href="/archives/<?php echo (\DateTime::createFromFormat('Y-m-d', $archive["date"]))->format('m-d-Y'); ?>">
+                        <?php echo date( 'F d, Y', strtotime($archive["date"]) ); ?>
+                        ( <?php echo $archive["count"]; ?> )</a>
+                </li>
+            <?php endforeach; ?>
         </ol>
     </div>
 

@@ -1,5 +1,5 @@
 
-<?php if(!empty(array_filter($errors))) : ?>
+<?php if($errors && !empty(array_filter($errors))) : ?>
 <div class="row align-items-center justify-content-center">
     <div class="alert alert-danger">
         <?php foreach ($errors as $error) : ?>
