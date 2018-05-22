@@ -58,14 +58,14 @@
 
                                 <!-- Uncomment the below line when working on localhost -->
                                 <!-- <div class="g-recaptcha" data-theme="light" data-sitekey= -->
-                                    <?= //$localhost_client; ?>>
+                                    <!-- <?php //echo $localhost_client; ?> > -->
                                 <!-- </div> -->
 
                                 <!-- The below line is to be commented when working on localhost and uncommented if the site has been deployed -->
                                 <!-- The "data-sitekey" below is domain dependent. A new key should be obtained for the corresponding domain  -->
 
                                 <div class="g-recaptcha" data-theme="light"
-                                    <!-- data-sitekey=<?= $heroku_client; ?>> -->
+                                    data-sitekey=<?php echo $heroku_client; ?> >
                                 </div>
 
                             </div>

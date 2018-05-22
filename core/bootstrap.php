@@ -22,7 +22,7 @@ App::bind('session', (Session::getInstance()));
 App::get('session')->initialize();
 
 App::bind('exceptionHandler', (ExceptionHandler::getInstance()));
-App::get('exceptionHandler')->initialize();
+// App::get('exceptionHandler')->initialize();
 
 /*--- view helpers ---*/
 function view($name, ...$data)
