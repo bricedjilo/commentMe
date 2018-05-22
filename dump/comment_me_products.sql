@@ -31,7 +31,7 @@ CREATE TABLE `products` (
   `category_id` int(11) NOT NULL,
   `description` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_on` timestamp NULL,
+  `updated_on` timestamp NULL, -- DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`),

@@ -31,7 +31,7 @@ CREATE TABLE `comments` (
   `created_by` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_on` timestamp NULL,
+  `updated_on` timestamp NULL, -- DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `created_by_user_idx` (`created_by`),

@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `role` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'subscriber',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL,
+  `updated_at` timestamp NULL, -- DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
