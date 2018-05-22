@@ -2,8 +2,6 @@
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-// var_dump($url); die();
-
 $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
@@ -11,7 +9,7 @@ $db = substr($url["path"], 1);
 
 return [
     'database' => [
-        'name' => $db,                  // Schema name
+    'name' => $db,                  // Schema name
         'username' => $username,
         'password' => $password,
         'server' => $server,        // Host name
@@ -35,6 +33,6 @@ return [
         'smtp_user' => 'f75510ff0de9ca',
         'smtp_password' => '4908943f447f81',
         'sender_email' => 'jeanm20153@gmail.com',
-        'sender_name' => 'Brice Djilo',
+        'sender_name' => 'Me',
     ]
 ];
