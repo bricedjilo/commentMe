@@ -17,7 +17,7 @@ class RegistrationsController {
     }
 
     public function show() {
-        if ( ! $message) {
+        if ( ! $message ) {
             redirect('');
         }
         return view('registrations.activation');

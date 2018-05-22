@@ -7,12 +7,6 @@ use App\Core\App;
 
 class SessionsController {
 
-    private $session;
-
-    public function create() {
-        return view('index', []);
-    }
-
     public function store() {
         try {
             $username = trim(filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING));

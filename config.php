@@ -34,5 +34,9 @@ return [
         'smtp_password' => '4908943f447f81',
         'sender_email' => 'jeanm20153@gmail.com',
         'sender_name' => 'Me',
+    ],
+    'recaptcha' => [
+        "localhost" => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
+        "heroku" => "6Ld9oFoUAAAAAFLMtDAkkuL5r438tSMsVyg1qdit"
     ]
 ];

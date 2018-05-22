@@ -33,6 +33,11 @@
                 <?php endif; ?>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="fuzzbuzz" href="/fizzbuzz">
+                        FizzBuzz Game
+                    </a>
+                </li>
                 <?php if($user) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="user" href="/#top">

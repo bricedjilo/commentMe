@@ -16,6 +16,8 @@ App::bind('mailer', (new Mailer())->getMailer(
     App::get('config')['gmailer']
 ));
 
+App::bind('recaptcha', App::get('config')['recaptcha']);
+
 App::bind('session', (Session::getInstance()));
 App::get('session')->initialize();
 
@@ -28,7 +30,7 @@ function view($name, ...$data)
     foreach($data as $datum) {
         extract($datum);
     }
-
+    
     $path = explode('.', $name);
 
     $session = App::get('session');
