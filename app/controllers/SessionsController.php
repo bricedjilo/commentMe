@@ -16,10 +16,7 @@ class SessionsController {
         } catch (CustomException $ce) {
             $errors = explode("\n", $ce->getMessage());
             return redirect('');
-        } catch(\Exception $e) {
-            App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
-            return redirect('');
-        }
+        } 
     }
 
     public function destroy() {

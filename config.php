@@ -11,7 +11,7 @@ $db = substr($url["path"], 1);
 
 return [
     'database' => [
-    'name' => $db,                  // Schema name
+        'name' => $db,                  // Schema name
         'username' => $username,
         'password' => $password,
         'server' => $server,        // Host name
