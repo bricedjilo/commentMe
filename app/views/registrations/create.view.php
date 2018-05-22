@@ -65,7 +65,7 @@
                                 <!-- The "data-sitekey" below is domain dependent. A new key should be obtained for the corresponding domain  -->
 
                                 <div class="g-recaptcha" data-theme="light"
-                                    <!-- data-sitekey=<?php $heroku_client; ?>> -->
+                                    <!-- data-sitekey=<?= $heroku_client; ?>> -->
                                 </div>
 
                             </div>
