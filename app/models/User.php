@@ -4,18 +4,33 @@ namespace App\Models;
 
 class User {
 
+    protected $id;
     protected $firstname;
     protected $lastname;
+    protected $username;
     protected $email;
     protected $password;
     protected $reg_complete = 0;
     protected $active = 0;
+    protected $role = "subscriber";
+    protected $created_at;
+    protected $updated_at;
 
-    function __construct($firstname, $lastname, $email, $password) {
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->email = $email;
-        $this->password = $password;
+
+    public function __construct() { }
+
+    public static function withProperties($firstname, $lastname, $username, $email, $password) {
+        $instance = new self();
+        $instance->firstname = $firstname;
+        $instance->lastname = $lastname;
+        $instance->email = $email;
+        $instance->username = $username;
+        $instance->password = $password;
+        return $instance;
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     public function getFirstName() {
@@ -30,12 +45,32 @@ class User {
         return $this->email;
     }
 
+    public function getUsername() {
+        return $this->username;
+    }
+
     public function getRegComplete() {
         return $this->reg_complete;
     }
 
     public function getActive() {
         return $this->active;
+    }
+
+    public function getRole() {
+        return $this->role;
+    }
+
+    public function getCreatedAt() {
+        return $this->created_at;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updated_at;
+    }
+
+    public function getPassword() {
+        return $this->password;
     }
 
     public function setFirstName($firstname) {
@@ -56,6 +91,10 @@ class User {
 
     public function setActive($active) {
         $this->active = $active;
+    }
+
+    public function setRole($role) {
+        $this->role = $role;
     }
 
     public function toArray() {

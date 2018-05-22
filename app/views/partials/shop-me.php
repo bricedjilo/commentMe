@@ -1,5 +1,11 @@
 
 <section class="container">
+    <div class="row mb-5">
+        <div class="col text-muted">
+            <h4>Shop</h4>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-4">
             <div class="card">

@@ -2,20 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Core\App;
+
 class HomeController {
 
     public function index() {
-        return view('home.index', []);
-    }
-
-    public function store() {
-        if(isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['password'])) {
-            $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-            die("rgehqwthrthyher");
-            (new SessionsManager)->getSession($email, $_POST['password']);
-            redirect('');
+        if(App::get('session')->get('user')) {
+            redirect('comments');
         }
-        // (new SessionsController)->store();
+        return view('home.index', compact('categories'));
     }
 
 }
