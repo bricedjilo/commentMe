@@ -32,7 +32,7 @@
                         <input type="hidden" name="_METHOD" value="DELETE" />
                     <tr>
                         <th ><?php echo $product["name"]; ?></th>
-                        <td ><?php echo $product["description"]; ?></td>
+                        <td ><?php echo substr($product["description"], 0, 100) . " ..."; ?></td>
                         <td class="px-0 mx-0"><img width="60%" class="img-thumbnail mx-0 auto"
                             src=<?php echo "/public/images/products/" . $product["image"]; ?> alt=""></td>
                         <td ><?php echo $product["category"]; ?></td>
