@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Domain\SessionsManager;
 use App\Exception\CustomException;
+use App\Core\App;
 
 class SessionsController {
 

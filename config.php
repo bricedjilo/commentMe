@@ -1,16 +1,23 @@
 <?php
 
-mysql://bd25f941dcafaa:2cc777dd@us-cdbr-iron-east-04.cleardb.net/heroku_04a54f22da0d1b9?reconnect=true
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+// var_dump($url); die();
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
 
 return [
     'database' => [
-        'name' => 'heroku_04a54f22da0d1b9',
-        'username' => 'bd25f941dcafaa',
-        'password' => '2cc777dd',
-        'connection' => 'mysql:host=us-cdbr-iron-east-04.cleardb.net',
-        'port' => '3306',
+        'name' => $db,                  // Schema name
+        'username' => $username,
+        'password' => $password,
+        'server' => $server,        // Host name
+        'port' => '',
         'options' => [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
         ]
     ],
     'gmailer' => [
