@@ -42,11 +42,9 @@
                 </table>
             </div>
 
-            <?php require('app/views/partials/admin/admin-footer.php'); ?>
-
             <?php require('app/views/partials/logout-modal.php'); ?>
         </div>
     </div>
 </div>
 
-<?php require('app/views/partials/footer.php'); ?>
+<?php require('app/views/partials/admin/admin-footer.php'); ?>

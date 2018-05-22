@@ -1,4 +1,27 @@
 
+        <div class="container">
+            <hr class="divider" >
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="container">
+            <div class="row">
+
+                <div class="col">
+                    <p>
+                        &copy; 2017-2018
+                        <span class="brand-footer">Comment Me</span> &middot;
+                        <a href="#">Privacy</a> &middot;
+                        <a href="#">Terms</a>
+                    </p>
+                </div>
+                <div class="col">
+                    <p class="float-right"><a href="#">Back to top</a></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
     <?php require('app/views/partials/logout-modal.php'); ?>
 
         <!-- Scripts-->

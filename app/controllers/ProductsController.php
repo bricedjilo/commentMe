@@ -26,7 +26,6 @@ class ProductsController {
         $productComments= $productManager->getProductComments($id, 5);
         $count = $productManager->getProductCommentsCount($product["id"])[0];
 
-        var_dump($product); die();
         return view('products.show',
             compact('categories'),
             compact('recentProducts'),
@@ -67,11 +66,11 @@ class ProductsController {
 
     public function destroy($id) {
         try {
-            if( (new ProductsManager())->delete($id) ) {
+            if( (new ProductsManager)->delete($id) ) {
                 redirect('admin/products');
             }
         } catch (\Exception $e) {
-            App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
+            App::get('session')->set(["errors" => explode("\n", "Must delete ")]);
             redirect('admin/products');
         }
     }

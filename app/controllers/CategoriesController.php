@@ -16,13 +16,13 @@ class CategoriesController {
         $categoriesManager = new CategoriesManager;
         $categories = $categoriesManager->getAllCategories();
         $recentProducts = $productManager->getRecentProducts(5);
-        $productsOfCategory = $productManager->getProductsOfCategory($id);
+        $products = $productManager->getProductsOfCategory($id);
         $category = $categoriesManager->findById($id)[0];
         $archives = $productManager->getProductsArchives();
         return view('categories.show',
             compact('categories'),
             compact('recentProducts'),
-            compact('productsOfCategory'),
+            compact('products'),
             compact('category'),
             compact('archives')
         );

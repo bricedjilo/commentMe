@@ -9,11 +9,6 @@ class UsersManager {
 
     public function create($user)
     {
-        // $user = (User::withProperties(
-        //             $user["firstname"], $user["lastname"], $user["username"],
-        //             $user["email"], $user["password"]
-        //         ));
-
         if ( App::get('database')->isPropDuplicate('users',
                 ["username" => $user["username"]], 'App\Models\User') )
         {

@@ -8,19 +8,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto" id="navigation">
-                <li class="nav-item">
-                    <a class="nav-link" href=<?php if ($user) echo "/categories"; else echo "/#categories";?>>
-                        Categories <span class="sr-only">(current)</span>
-                    </a>
-                </li>
+
                 <?php if ( ! $user ) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#shop-me">Shop</a>
+                    <a class="nav-link" href="/#shop-me">Shop</a>
                 </li>
                 <?php endif; ?>
                 <li class="nav-item">
                     <a class="nav-link" href=<?php if ($user) echo "/comments"; else echo "/#new-arrivals";?>>
                         New Products <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/comments">
+                        Comments <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <?php if (isAdmin()) : ?>
@@ -55,3 +56,5 @@
         </div>
     </nav>
 </header>
+
+<main role="main" id="top">

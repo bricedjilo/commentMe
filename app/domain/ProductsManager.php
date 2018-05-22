@@ -114,10 +114,16 @@ class ProductsManager {
     }
 
     public function delete($id) {
-        if( ! App::get('database')->delete('products', ["id" => $id]) ) {
+        if( App::get('database')->delete('comments', ["product_id" => $id]) ) {
+            if( ! App::get('database')->delete('products', ["products.id" => $id]) ) {
+                throw new CustomException(CustomExceptionType::SQL_STORE,
+                    "We could not delete {$product["name"]}. Something went wrong.");
+            }
+        } else {
             throw new CustomException(CustomExceptionType::SQL_STORE,
                 "We could not delete {$product["name"]}. Something went wrong.");
         }
+
         return true;
     }
 

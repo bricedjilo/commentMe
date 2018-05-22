@@ -1,8 +1,5 @@
 
-<?php require('app/views/partials/head.php'); ?>
-<?php require('app/views/partials/nav.php'); ?>
-
-<main role="main" class="container" id="top">
+<div class="container">
 
     <header class="m-100">
         <div class="">
@@ -94,16 +91,5 @@
         <?php require("app/views/partials/aside.php"); ?>
 
     </section>
-
-    <div class="container">
-        <hr class="divider" >
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2018 <span class="brand-footer">Comment Me</span> &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-</main>
-
-<?php require('app/views/partials/footer.php'); ?>
+    
+</div>

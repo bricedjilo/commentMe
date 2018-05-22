@@ -1,6 +1,6 @@
 <?php require('app/views/partials/head.php'); ?>
 
-<div class="activation-section  my-0 mx-0 py-0" style="min-height: 100%; height: 100vh">
+<div class="activation-section  my-0 mx-0 py-0 activation" >
 
         <div class="text-center py-3 px-5">
             <h1 class="text-muted mb-5">Account Activation</h1>

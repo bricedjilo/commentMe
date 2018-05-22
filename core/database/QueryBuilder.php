@@ -38,8 +38,6 @@ class QueryBuilder {
         $sql .= ($orderBy) ? " ORDER BY $orderBy DESC" : "";
         $sql .= ($limit) ? " LIMIT " . $limit : "";
 
-        // die($sql);
-
         $statement = $this->pdo->prepare($sql);
         foreach ($params as $key => $value) {
             $statement->bindParam(':value', $params[$key]);
@@ -85,7 +83,8 @@ class QueryBuilder {
     {
         $sql = "DELETE FROM {$table} WHERE " . $this->buildAndConditions($params);
         $statement = $this->pdo->prepare($sql);
-        return $statement->execute($params);
+        $statement = $this->bindValues($params, $statement);
+        return $statement->execute();
     }
 
     public function isPropDuplicate($table, $params, $intoClass) {

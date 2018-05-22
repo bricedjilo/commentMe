@@ -4,6 +4,7 @@ use App\Core\App;
 use App\Core\Session;
 use App\Core\Database\{ DBConnection, QueryBuilder };
 use App\Domain\Mailer;
+use App\Exception\ExceptionHandler;
 
 App::bind('config', require 'config.php');
 
@@ -15,9 +16,13 @@ App::bind('mailer', (new Mailer())->getMailer(
     App::get('config')['gmailer']
 ));
 
+// App::bind('exceptionHandler', ExceptionHandler());
+
 App::bind('session', (Session::getInstance()));
 App::get('session')->initialize();
 
+App::bind('exceptionHandler', (ExceptionHandler::getInstance()));
+App::get('exceptionHandler')->initialize();
 
 /*--- view helpers ---*/
 function view($name, ...$data)
@@ -48,3 +53,9 @@ function isAdmin() {
     $user = App::get('session')->get('user');
     return $user && strcmp($user->getRole(), 'admin') == 0;
 }
+
+// function handleException(Exception $e)
+// {
+//     print "We have a problem";
+//      // redirect("");
+// }

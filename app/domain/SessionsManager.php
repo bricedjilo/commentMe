@@ -26,6 +26,5 @@ class SessionsManager {
     public function delete() {
         session_unset();
         redirect('');
-        // var_dump($_SESSION); die();
     }
 }

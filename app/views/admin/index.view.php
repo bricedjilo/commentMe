@@ -10,10 +10,10 @@
             <?php require('app/views/partials/admin/breadcrumb.php'); ?>
             <?php require('app/views/partials/admin/icon-cards.php'); ?>
 
-            <?php require('app/views/partials/admin/admin-footer.php'); ?>
+
 
         </div>
     </div>
 </div>
 
-<?php require('app/views/partials/footer.php'); ?>
+<?php require('app/views/partials/admin/admin-footer.php'); ?>

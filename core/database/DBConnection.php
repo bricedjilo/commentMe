@@ -2,6 +2,8 @@
 
 namespace App\Core\Database;
 
+use App\Exception\{ CustomException, CustomExceptionType };
+
 class DBConnection {
 
     public static function make($config) {
@@ -13,7 +15,7 @@ class DBConnection {
                 $config['options']
             );
         } catch (\PDOException $e) {
-            die($e->getMessage());
+
         }
 
     }

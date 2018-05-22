@@ -15,36 +15,39 @@
                 <li class="breadcrumb-item active">Show Products</li>
             </ol>
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="row">Name</th>
-                            <th scope="col" >Description</th>
-                            <th scope="col" class="">Image</th>
-                            <th scope="col" class="">Category</th>
-                            <th scope="col" class="">Edit</th>
-                            <th scope="col" class="">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($products as $product) : ?>
-                        <tr>
-                            <th ><?php echo $product["name"]; ?></th>
-                            <td ><?php echo $product["description"]; ?></td>
-                            <td class="px-0 mx-0"><img width="60%" class="img-thumbnail mx-0 auto"
-                                src=<?php echo "/public/images/products/" . $product["image"]; ?> alt=""></td>
-                            <td ><?php echo $product["category"]; ?></td>
-                            <td ><a href=""><i class="far fa-edit fa-lg"></i></a></td>
-                            <td ><a href=<?php echo "/products/{$product["id"]}"; ?>><i class="far fa-trash-alt fa-lg"></i></a></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-
-            <br /><br />
-            <?php require('app/views/partials/admin/admin-footer.php'); ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="row">Name</th>
+                        <th scope="col" >Description</th>
+                        <th scope="col" class="">Image</th>
+                        <th scope="col" class="">Category</th>
+                        <th scope="col" class="">Edit</th>
+                        <th scope="col" class="">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($products as $product) : ?>
+                    <form class="" action=<?php echo "/admin/products/" . $product["id"]; ?> method="post">
+                        <input type="hidden" name="_METHOD" value="DELETE" />
+                    <tr>
+                        <th ><?php echo $product["name"]; ?></th>
+                        <td ><?php echo $product["description"]; ?></td>
+                        <td class="px-0 mx-0"><img width="60%" class="img-thumbnail mx-0 auto"
+                            src=<?php echo "/public/images/products/" . $product["image"]; ?> alt=""></td>
+                        <td ><?php echo $product["category"]; ?></td>
+                        <td ><a href=""><i class="far fa-edit fa-lg"></i></a></td>
+                        <td >
+                            <input type="hidden" name="id" value=<?php echo $product["id"]; ?> />
+                            <button class="btn btn-default" type="submit">Delete</button>
+                        </td>
+                    </tr>
+                    </form>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
 
-<?php require('app/views/partials/footer.php'); ?>
+<?php require('app/views/partials/admin/admin-footer.php'); ?>
