@@ -30,7 +30,7 @@ function view($name, ...$data)
     foreach($data as $datum) {
         extract($datum);
     }
-    
+
     $path = explode('.', $name);
 
     $session = App::get('session');
@@ -39,6 +39,7 @@ function view($name, ...$data)
     $errors = App::get('session')->get('errors');
     $sucesses = ($successes) ?  $successes : [];
     $errors = ($errors) ?  $errors : [];
+
     App::get('session')->set(["successes" => []]);
     App::get('session')->set(["errors" => []]);
 

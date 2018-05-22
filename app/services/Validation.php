@@ -44,7 +44,11 @@ class Validation {
 
     public static function isCaptchaValid($captcha) {
         $response = json_decode(file_get_contents(
-                "https://www.google.com/recaptcha/api/siteverify?secret=" . App::get('recaptcha')["heroku"] .
+                // Uncomment this line if working on localhost
+                // "https://www.google.com/recaptcha/api/siteverify?secret=" . App::get('recaptcha')["localhost-server"]
+
+                // Comment this line if working on localhost
+                "https://www.google.com/recaptcha/api/siteverify?secret=" . App::get('recaptcha')["heroku-server"] .
                 "&response=" . $captcha .
                 "&remoteip=" . $_SERVER['REMOTE_ADDR']
             ), true);

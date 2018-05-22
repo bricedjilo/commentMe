@@ -1,6 +1,8 @@
 <?php
 
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$heroku_serv = getenv("HEROKU_RECAP_SERVER");
+$heroku_client = getenv("HEROKU_RECAP_CLIENT");
 
 $server = $url["host"];
 $username = $url["user"];
@@ -27,16 +29,10 @@ return [
         'sender_email' => 'no-reply@commentme.com',
         'sender_name' => 'admin',
     ],
-    'mailtrap' => [
-        'smtp_host' => 'smtp.mailtrap.io',
-        'smtp_port' => 2525,
-        'smtp_user' => 'f75510ff0de9ca',
-        'smtp_password' => '4908943f447f81',
-        'sender_email' => 'jeanm20153@gmail.com',
-        'sender_name' => 'Me',
-    ],
     'recaptcha' => [
-        "localhost" => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
-        "heroku" => "6Ld9oFoUAAAAAFLMtDAkkuL5r438tSMsVyg1qdit"
+        "localhost-server" => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
+        "localhost-client" => "6LedT1kUAAAAABOZpXtq9dG4ir_hsso8VK1J7d4A",
+        "heroku-server" => $heroku_serv,
+        "heroku-client" => $heroku_client
     ]
 ];
