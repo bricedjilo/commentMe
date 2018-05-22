@@ -46,7 +46,7 @@
                     </li>
                 <?php else : ?>
                     <li class="nav-item">
-                        <a class="nav-link" id="signin" href="#login"><strong>Sign in</strong></a>
+                        <a class="nav-link" id="signin" href="/#login"><strong>Sign in</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/register"><strong>Sign up</strong></a>
