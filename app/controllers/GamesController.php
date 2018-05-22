@@ -22,9 +22,10 @@ class GamesController {
 
         try {
             if( Validation::isInputValid($lower, $upper) ) {
-                $diff = $upper - $lower + 1;
-                for ( $i = 1; $i <= $diff; $i++) {
-                    $results[$i] = !($i % 15) ? "FizzBuzz" : (!($i % 5) ? "Buzz" : (!($i % 3) ? "Fizz" : $i));
+                $diff = $upper - $lower;
+                for ( $i = 0; $i <= $diff; $i++) {
+                    $num = $lower + $i;
+                    $results[$i] = !($num % 15) ? "FizzBuzz" : (!($num % 5) ? "Buzz" : (!($num % 3) ? "Fizz" : $num));
                 }
             }
             return view('games.fizzbuzz', compact('results'));
