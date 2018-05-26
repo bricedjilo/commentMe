@@ -17,28 +17,28 @@ $db = substr($url["path"], 1);
 
 return [
     'database' => [
-        'name' => $db,                  // Schema name
-        'username' => $username,
-        'password' => $password,
-        'server' => $server,        // Host name
-        'port' => '',
-        'options' => [
+        'name'      => $db,                  // Schema name
+        'username'  => $username,
+        'password'  => $password,
+        'server'    => $server,        // Host name
+        'port'      => '',
+        'options'   => [
             \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION
         ]
     ],
     'gmailer' => [
-        'smtp_host' => $mail['smtp_host'],
-        'smtp_port' => $mail['smtp_port'],
-        'smtp_secure' => $mail['smtp_secure'],
-        'smtp_user' => $mail['smtp_user'],
+        'smtp_host'     => $mail['smtp_host'],
+        'smtp_port'     => $mail['smtp_port'],
+        'smtp_secure'   => $mail['smtp_secure'],
+        'smtp_user'     => $mail['smtp_user'],
         'smtp_password' => $mail['smtp_password'],
-        'sender_email' => $mail['sender_email'],
-        'sender_name' => $mail['sender_name'],
+        'sender_email'  => $mail['sender_email'],
+        'sender_name'   => $mail['sender_name'],
     ],
     'recaptcha' => [
-        "localhost-server" => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
-        "localhost-client" => "6LedT1kUAAAAABOZpXtq9dG4ir_hsso8VK1J7d4A",
-        "heroku-server" => $heroku_serv,
-        "heroku-client" => $heroku_client
+        "localhost-server"  => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
+        "localhost-client"  => "6LedT1kUAAAAABOZpXtq9dG4ir_hsso8VK1J7d4A",
+        "heroku-server"     => $heroku_serv,
+        "heroku-client"     => $heroku_client
     ]
 ];
