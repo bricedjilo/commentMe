@@ -13,11 +13,16 @@ class RegistrationsController {
     protected $message = "";
 
     public function create() {
-        return view('registrations.create');
+        $heroku_client = App::get('recaptcha')["heroku-client"];
+        $localhost_client = App::get('recaptcha')["localhost-client"];
+        return view('registrations.create',
+            compact('heroku_client'),
+            compact('localhost_client')
+        );
     }
 
     public function show() {
-        if ( ! $message) {
+        if ( ! $message ) {
             redirect('');
         }
         return view('registrations.activation');

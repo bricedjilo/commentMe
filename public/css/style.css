@@ -123,6 +123,11 @@ a.signup:hover {
     height: 100vh;
 }
 
+.fizzbuzz {
+    background-color: #f5f5f5 !important;
+    min-height: 100%;
+}
+
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;

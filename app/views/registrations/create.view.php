@@ -55,7 +55,19 @@
 
                         <div class="form-row align-items-center justify-content-center" style="margin: 0 auto; padding: 0px;">
                             <div class="form-group align-items-center justify-content-center my-4 mx-0 py-0 px-0 ">
-                                <div class="g-recaptcha" data-theme="light" data-sitekey="6LedT1kUAAAAABOZpXtq9dG4ir_hsso8VK1J7d4A"></div>
+
+                                <!-- Uncomment the below line when working on localhost -->
+                                <!-- <div class="g-recaptcha" data-theme="light" data-sitekey= -->
+                                    <!-- <?php //echo $localhost_client; ?> > -->
+                                <!-- </div> -->
+
+                                <!-- The below line is to be commented when working on localhost and uncommented if the site has been deployed -->
+                                <!-- The "data-sitekey" below is domain dependent. A new key should be obtained for the corresponding domain  -->
+
+                                <div class="g-recaptcha" data-theme="light"
+                                    data-sitekey=<?php echo $heroku_client; ?> >
+                                </div>
+
                             </div>
                         </div>
                         <div class="form-row align-items-center justify-content-center">
@@ -77,4 +89,4 @@
 
     </section>
 
-<?php require('app/views/partials/footer.php'); ?>
+    <?php require('app/views/partials/footer.php'); ?>

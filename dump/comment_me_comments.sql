@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `comment_me` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `comment_me`;
+CREATE DATABASE  IF NOT EXISTS `heroku_04a54f22da0d1b9` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `heroku_04a54f22da0d1b9`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: comment_me
+-- Host: 127.0.0.1    Database: heroku_04a54f22da0d1b9
 -- ------------------------------------------------------
 -- Server version	5.7.19-log
 
@@ -31,7 +31,7 @@ CREATE TABLE `comments` (
   `created_by` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_on` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_on` timestamp NULL, -- DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `created_by_user_idx` (`created_by`),

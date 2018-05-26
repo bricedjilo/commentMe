@@ -16,7 +16,7 @@ App::bind('mailer', (new Mailer())->getMailer(
     App::get('config')['gmailer']
 ));
 
-// App::bind('exceptionHandler', ExceptionHandler());
+App::bind('recaptcha', App::get('config')['recaptcha']);
 
 App::bind('session', (Session::getInstance()));
 App::get('session')->initialize();
@@ -39,6 +39,7 @@ function view($name, ...$data)
     $errors = App::get('session')->get('errors');
     $sucesses = ($successes) ?  $successes : [];
     $errors = ($errors) ?  $errors : [];
+
     App::get('session')->set(["successes" => []]);
     App::get('session')->set(["errors" => []]);
 
@@ -53,9 +54,3 @@ function isAdmin() {
     $user = App::get('session')->get('user');
     return $user && strcmp($user->getRole(), 'admin') == 0;
 }
-
-// function handleException(Exception $e)
-// {
-//     print "We have a problem";
-//      // redirect("");
-// }

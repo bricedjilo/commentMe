@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use App\Core\App;
 use App\Exception\{ CustomException, CustomExceptionType };
 
 class Validation {
@@ -42,9 +44,15 @@ class Validation {
 
     public static function isCaptchaValid($captcha) {
         $response = json_decode(file_get_contents(
-                "https://www.google.com/recaptcha/api/siteverify?secret=6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t&response="
-                . $captcha
-                . "&remoteip=" . $_SERVER['REMOTE_ADDR']
+
+                // Uncomment this line if working on localhost
+                // "https://www.google.com/recaptcha/api/siteverify?secret=" . App::get('recaptcha')["localhost-server"] .
+
+                // Comment this line if working on localhost
+                "https://www.google.com/recaptcha/api/siteverify?secret=" . App::get('recaptcha')["heroku-server"] .
+
+                "&response=" . $captcha .
+                "&remoteip=" . $_SERVER['REMOTE_ADDR']
             ), true);
         if( ! $response['success'] ) {
             throw new CustomException(CustomExceptionType::VALIDATION,
@@ -92,6 +100,18 @@ class Validation {
     public static function stringLength($str, $length) {
         if ( strlen($str, $length) >= 1000 ) {
             throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Text length should be less than {$length} characters");
+        }
+    }
+
+    public function isInputValid($lower, $upper) {
+        if($lower && $upper) {
+            if( $upper - $lower > 0) {
+                return true;
+            } else {
+                throw new \Exception("The upper bound must be greater than than the lower bound.");
+            }
+        } else {
+            throw new \Exception("Both lower and upper bound must be whole or natural numbers greater than 0.");
         }
     }
 }

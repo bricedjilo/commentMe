@@ -9,10 +9,12 @@ $router->get('products', 'ProductsController@index');
 $router->get('products/{id}', 'ProductsController@show');
 $router->get('archives/{date}', 'ArchivesController@show');
 $router->get('logout', 'SessionsController@destroy');
+$router->get('fizzbuzz', 'GamesController@create');
 
 $router->post('login', 'SessionsController@store');
 $router->post('register', 'RegistrationsController@store');
 $router->post('comments', 'CommentsController@store');
+$router->post('fizzbuzz', 'GamesController@store');
 
 // Admin
 $router->get('admin', 'AdminController@index');

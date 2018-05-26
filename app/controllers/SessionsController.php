@@ -3,14 +3,9 @@
 namespace App\Controllers;
 use App\Domain\SessionsManager;
 use App\Exception\CustomException;
+use App\Core\App;
 
 class SessionsController {
-
-    private $session;
-
-    public function create() {
-        return view('index', []);
-    }
 
     public function store() {
         try {
@@ -21,10 +16,7 @@ class SessionsController {
         } catch (CustomException $ce) {
             $errors = explode("\n", $ce->getMessage());
             return redirect('');
-        } catch(\Exception $e) {
-            App::get('session')->set(["errors" => explode("\n", $e->getMessage())]);
-            return redirect('');
-        }
+        } 
     }
 
     public function destroy() {

@@ -21,13 +21,15 @@
             <div class="my-4 text-uppercase text-muted">
                 <h4 class="font-weight-bold"><?php echo $product["name"]; ?></h4>
             </div>
-
+            
             <div class="text-muted">
                 <i class="far fa-calendar-alt"></i>
                     <?php echo date( 'M d, Y h:i a', strtotime($product["created_on"]) ); ?> &nbsp; |  &nbsp;
                 <i class="far fa-user"></i> &nbsp; Admin &nbsp; | &nbsp;
-                <i class="far fa-folder"></i> &nbsp; <a href=""> <?php
-                echo $product["category"]; ?> </a>
+                <i class="far fa-folder"></i> &nbsp;
+                <a href="<?php echo "/categories/" . $product["category_id"] ?>">
+                    <?php echo $product["category"]; ?>
+                </a>
             </div>
 
             <div class="mt-4 text-justify mb-2">

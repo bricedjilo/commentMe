@@ -15,9 +15,6 @@ class Router {
         'DELETE' => []
     ];
 
-    public function fallback() {
-
-    }
 
     public function get($uri, $controller) {
         $segments = explode('/', $uri);
