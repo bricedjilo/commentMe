@@ -3,6 +3,12 @@
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $heroku_serv = getenv("HEROKU_RECAP_SERVER");
 $heroku_client = getenv("HEROKU_RECAP_CLIENT");
+$mailParams = explode('&', getenv("MAIL"));
+$mail = [];
+foreach ($mailParams as $mailParam) {
+    $param = explode('=', $mailParam);
+    $mail[$param[0]] = $param[1];
+}
 
 $server = $url["host"];
 $username = $url["user"];
@@ -21,13 +27,13 @@ return [
         ]
     ],
     'gmailer' => [
-        'smtp_host' => 'smtp.gmail.com',
-        'smtp_port' => 465,
-        'smtp_secure' => 'ssl',
-        'smtp_user' => 'commentme.project@gmail.com',
-        'smtp_password' => 'commentme007',
-        'sender_email' => 'no-reply@commentme.com',
-        'sender_name' => 'admin',
+        'smtp_host' => $mail['smtp_host'],
+        'smtp_port' => $mail['smtp_port'],
+        'smtp_secure' => $mail['smtp_secure'],
+        'smtp_user' => $mail['smtp_user'],
+        'smtp_password' => $mail['smtp_password'],
+        'sender_email' => $mail['sender_email'],
+        'sender_name' => $mail['sender_name'],
     ],
     'recaptcha' => [
         "localhost-server" => "6LedT1kUAAAAAPbi-khy5HKU3WY9StPY1P4syI0t",
