@@ -78,12 +78,11 @@
                 </table>
                 <?php endif; ?>
             </div>
-
-            <p class="mt-5">Return to <a href="/"><span class="brand-footer">Comment Me</span></a></p>
-
         </div>
-
     </div>
 </main>
+<footer>
+    <p class="mt-5">Return to <a href="/"><span class="brand-footer">Comment Me</span></a></p>
+</footer>
 </body>
 </html>
