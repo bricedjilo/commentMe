@@ -14,9 +14,9 @@ class SessionsController {
             (new SessionsManager)->getSession($username, $password);
             redirect('comments');
         } catch (CustomException $ce) {
-            $errors = explode("\n", $ce->getMessage());
+            App::get('session')->set(["errors" => explode("\n", $ce->getMessage())]);
             return redirect('');
-        } 
+        }
     }
 
     public function destroy() {

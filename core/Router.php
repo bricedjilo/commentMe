@@ -59,7 +59,7 @@ class Router {
     public function direct($uri, $requestType) {
         $user = App::get('session')->get('user');
         if( preg_match('/admin/', $uri) && ( ! $user || strcmp( $user->getRole(), "admin" ) != 0 ) ) {
-                redirect('');
+            redirect('');
         }
 
         $segments = explode('/', $uri);
@@ -106,6 +106,7 @@ class Router {
     {
         $controllerClass = "App\\Controllers\\{$controller}";
         $controllerClass = new $controllerClass;
+
         if(! method_exists($controllerClass, $action)) {
             throw new \Exception("{$controller} does not respond to {$action} action.");
         }

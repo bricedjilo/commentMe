@@ -10,7 +10,7 @@ class HomeController {
         if(App::get('session')->get('user')) {
             redirect('comments');
         }
-        return view('home.index', compact('categories'));
+        return view('home.index');
     }
 
 }

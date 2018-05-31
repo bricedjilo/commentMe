@@ -12,9 +12,11 @@ class SessionsManager {
     public function getSession($username, $password)
     {
         $users = array_filter(App::get('database')->findByProperty("users", ["username" => $username], 'App\Models\User'));
-        if ( empty(array_filter($users)) ) {
+        if ( empty(array_filter($users)) )
+        {
             throw new CustomException(CustomExceptionType::AUTH, "Incorrect email or password. Try again.");
-        } elseif ( !empty(array_filter($users)) && Utility::verify($password, $users[0]->getPassword()) ) {
+        } elseif ( !empty(array_filter($users)) && Utility::verify($password, $users[0]->getPassword()) )
+        {
             App::get('session')->set(["user" => $users[0]]);
             return App::get('session');
         } else {

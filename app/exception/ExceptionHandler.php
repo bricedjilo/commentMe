@@ -25,11 +25,11 @@ class ExceptionHandler {
     {
         if( $e instanceof RouteNotFoundException) {
             $errorType = "404";
-            view("error.error", \compact("errorType"));
+            view("error.error", compact("errorType"));
         } else {
             $errorType = "uncaught";
             App::get('mailer')->sendErrorLogsEmail($e->getTraceAsString());
-            view("error.error", \compact("errorType"));
+            view("error.error", compact("errorType"));
         }
     }
 

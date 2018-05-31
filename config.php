@@ -4,6 +4,7 @@ $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $heroku_serv = getenv("HEROKU_RECAP_SERVER");
 $heroku_client = getenv("HEROKU_RECAP_CLIENT");
 $mailParams = explode('&', getenv("MAIL"));
+
 $mail = [];
 foreach ($mailParams as $mailParam) {
     $param = explode('=', $mailParam);

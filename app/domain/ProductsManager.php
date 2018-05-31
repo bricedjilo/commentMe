@@ -123,7 +123,6 @@ class ProductsManager {
             throw new CustomException(CustomExceptionType::SQL_STORE,
                 "We could not delete {$product["name"]}. Something went wrong.");
         }
-
         return true;
     }
 

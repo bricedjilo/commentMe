@@ -13,7 +13,7 @@ class CommentsManager {
     {
         if ( ! App::get('database')->insert('comments', $comment, 'App\Models\Comment')) {
             throw new CustomException(CustomExceptionType::SQL_STORE,
-                "We could not add your comment titled \"{$product["name"]}\".
+                "We could not add your comment to \"{$product["name"]}\".
                 Please check the fields and try again."
             );
         }

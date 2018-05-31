@@ -99,7 +99,7 @@ class Validation {
 
     public static function stringLength($str, $length) {
         if ( strlen($str, $length) >= 1000 ) {
-            throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Text length should be less than {$length} characters");
+            throw new CustomException(CustomExceptionType::ILLEGAL_ARGS, "Text length should be less than 1000 characters");
         }
     }
 
