@@ -1,7 +1,7 @@
 
 <?php require('app/views/partials/head.php'); ?>
 
-<main class="fizzbuzz mb-0">
+<main class="fizzbuzz mx-0 my-0">
     <div class="mx-0 pt-5" >
         <div class="text-center pt-5 px-5">
             <h1 class="text-muted mb-5">Fizz Buzz Game</h1>
@@ -54,7 +54,6 @@
             </div>
 
             <div class="row justify-content-center mt-5">
-
                 <?php if ( $results ) : ?>
                 <table class="table col-md-6">
                     <thead>

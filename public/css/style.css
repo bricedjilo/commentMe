@@ -126,6 +126,9 @@ a.signup:hover {
 .fizzbuzz {
     background-color: #f5f5f5 !important;
     min-height: 100% !important;
+}
+
+main.fizzbuzz.mb-0 {
     height: 100vh !important;
 }
 
