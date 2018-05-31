@@ -1,9 +1,8 @@
 
 <?php require('app/views/partials/head.php'); ?>
 
-<main class="fizzbuzz">
+<main class="fizzbuzz mb-0">
     <div class="mx-0 pt-5" >
-
         <div class="text-center pt-5 px-5">
             <h1 class="text-muted mb-5">Fizz Buzz Game</h1>
 
@@ -79,8 +78,11 @@
                 </table>
                 <?php endif; ?>
             </div>
+
+            <p class="mt-5">Return to <a href="/"><span class="brand-footer">Comment Me</span></a></p>
+
         </div>
-        <p class="mt-5">Return to <a href="/"><span class="brand-footer">Comment Me</span></a></p>
+
     </div>
 </main>
 </body>
