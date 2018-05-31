@@ -53,7 +53,7 @@
     <div class="p-3">
         <h4 >Visit Us</h4>
         <ol class="list-unstyled">
-            <li><a href="https://github.com/bricedjilo/commentMe"><i class="fab fa-github fa-2x"></i></a>
+            <li><a href="https://github.com/bricedjilo/commentMe/tree/heroku"><i class="fab fa-github fa-2x"></i></a>
                 <a href="https://comment-me.herokuapp.com/"><i class="fas fa-globe fa-2x"></i></a>
             </li>
         </ol>
