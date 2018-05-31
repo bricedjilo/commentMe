@@ -1,9 +1,9 @@
 
 <?php require('app/views/partials/head.php'); ?>
 
-    <div class="fizzbuzz mx-0 py-5" >
+    <div class="fizzbuzz mx-0 pt-5" >
 
-        <div class="text-center py-5 px-5">
+        <div class="text-center pt-5 px-5">
             <h1 class="text-muted mb-5">Fizz Buzz Game</h1>
 
             <div class="row justify-content-center mb-5">

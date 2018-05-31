@@ -125,7 +125,8 @@ a.signup:hover {
 
 .fizzbuzz {
     background-color: #f5f5f5 !important;
-    min-height: 100%;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
 }
 
 .marketing .col-lg-4 {
